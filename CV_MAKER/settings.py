@@ -74,13 +74,24 @@ WSGI_APPLICATION = 'CV_MAKER.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'rmnwoosd',
+#         'USER': 'rmnwoosd',
+#         'PASSWORD': 'B7xUrajVZc-q_4QtLKWaTSvuLU-ALmdG',
+#         'HOST': 'drona.db.elephantsql.com',
+#         'PORT': '5432'
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'rmnwoosd',
-        'USER': 'rmnwoosd',
-        'PASSWORD': 'B7xUrajVZc-q_4QtLKWaTSvuLU-ALmdG',
-        'HOST': 'drona.db.elephantsql.com',
+        'NAME': 'cv_db',
+        'USER': 'postgres',
+        'PASSWORD': 'ElsTony24',
+        'HOST': 'localhost',
         'PORT': '5432'
     }
 }

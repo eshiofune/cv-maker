@@ -77,10 +77,10 @@ WSGI_APPLICATION = 'CV_MAKER.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cv_maker_db',
-        'USER': 'postgres',
-        'PASSWORD': 'ElsTony24',
-        'HOST': 'localhost',
+        'NAME': 'rmnwoosd',
+        'USER': 'rmnwoosd',
+        'PASSWORD': 'B7xUrajVZc-q_4QtLKWaTSvuLU-ALmdG',
+        'HOST': 'drona.db.elephantsql.com',
         'PORT': '5432'
     }
 }
@@ -122,4 +122,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]

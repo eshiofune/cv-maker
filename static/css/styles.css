@@ -1,0 +1,14 @@
+.style-board {
+  height: 400px;
+  background-image: url(../img/rush-resume-template-1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.style-signup {
+  background-image: url(../img/mountain_bg.jpg);
+}
+
+.style-login {
+  background-image: url(../img/mountain_bg.jpg);
+}

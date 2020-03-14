@@ -51,7 +51,7 @@ def signup(request):
             print('user created')
             if user.is_active:
                 auth.login(request, user)
-                return redirect('/')
+                return redirect('/dashboard/')
 
     else:
         return render(request, 'signup.html')
@@ -69,8 +69,7 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            print('got here')
-            return redirect('/')
+            return redirect('/dashboard/')
         else:
             messages.info(request, 'Invalid Username or Password')
             return redirect('/login/')
@@ -78,7 +77,22 @@ def login(request):
         return render(request, 'login.html')
 
 
+# a function to render the dashboard template
+def dashboard(request):
+    return render(request, 'dashboard.html')
+
+
 # a function to logout the user
 def logout(request):
     auth.logout(request)
     return redirect('/')
+
+
+# a function to render the template for CV samples
+def createcv(request):
+    return render(request, 'createcv.html')
+
+
+# a function to render and also update the profile table details in the database
+def profileform(request):
+    return render(request, 'profileform.html')

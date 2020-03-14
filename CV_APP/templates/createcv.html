@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ <div style="padding-top: 70px; background-color: rgb(255,255,255,0.7)">
+        <div class="projects-horizontal">
+          <div class="container">
+            <div class="intro">
+              <h2 class="text-center" >Portfolio</h2>
+              <p class="text-center">
+                Nunc luctus in metus eget fringilla. Aliquam sed justo ligula.
+                Vestibulum nibh erat, pellentesque ut laoreet vitae.{" "}
+              </p>
+            </div>
+            <div class="row projects">
+
+          {% for project in projects %}
+              <div class="col-sm-6 item" style="background-color: white">
+                <div class="row">
+                  <div class="col-md-12 col-lg-5">
+                    <a href="{{project.link}}">
+                      <img class="img-fluid" src="{{project.image.url}}" />
+                    </a>
+                  </div>
+                  <div class="col">
+                    <h3 class="name">{{project.name}}</h3>
+                    <p class="description">{{project.description}}</p>
+                    <hr>
+                    <p>Link: <a href="{{project.link}}">Click Here</a></p>
+                  </div>
+                </div>
+              </div>
+          {% endfor %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock content %}

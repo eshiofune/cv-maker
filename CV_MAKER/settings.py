@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import cloudinary
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -37,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'CV_APP'
+    'CV_APP',
+    'cloudinary'
 ]
 
 MIDDLEWARE = [
@@ -74,27 +76,27 @@ WSGI_APPLICATION = 'CV_MAKER.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'rmnwoosd',
-        'USER': 'rmnwoosd',
-        'PASSWORD': 'B7xUrajVZc-q_4QtLKWaTSvuLU-ALmdG',
-        'HOST': 'drona.db.elephantsql.com',
-        'PORT': '5432'
-    }
-}
-
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'cv_db',
-#         'USER': 'postgres',
-#         'PASSWORD': 'ElsTony24',
-#         'HOST': 'localhost',
+#         'NAME': 'rmnwoosd',
+#         'USER': 'rmnwoosd',
+#         'PASSWORD': 'B7xUrajVZc-q_4QtLKWaTSvuLU-ALmdG',
+#         'HOST': 'drona.db.elephantsql.com',
 #         'PORT': '5432'
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'cv_db',
+        'USER': 'postgres',
+        'PASSWORD': 'ElsTony24',
+        'HOST': 'localhost',
+        'PORT': '5432'
+    }
+}
 
 
 # Password validation
@@ -141,3 +143,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+
+cloudinary.config(
+    cloud_name="db2rnmspi",
+    api_key="885114184925268",
+    api_secret="cAnTaK77JbMWZeufMv8Tx4-oGKQ"
+)

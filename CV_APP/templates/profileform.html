@@ -4,117 +4,254 @@
 
 <div data-bs-hover-animate="pulse"  class="container emp-profile">
 <div class="container bootstrap snippet">
-    <div class="row">
-  		<div class="col-sm-10"><h1>{{user.first_name}} {{user.last_name}}</h1></div>
-    	<div class="col-sm-2"><a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a></div>
-    </div>
-    <div class="row">
-  		<div class="col-sm-3"><!--left col-->
-              
-
-      <div class="text-center">
+   <form action="{% url 'profile' %}" method='post' class='border'>
+   {% csrf_token %}
+<div class="row">
+  	<div class="col-sm-3"><!--left col-->  
+      <br>
+       <div class="text-center">
         <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
         <h6>Upload a different photo...</h6>
-        <input type="file" class="text-center center-block file-upload">
-      </div></hr><br>
-
-               
-          <div class="panel panel-default">
-            <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
-            <div class="panel-body"><a href="http://bootnipets.com">bootnipets.com</a></div>
-          </div>
-          <ul class="list-group">
-            <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> 125</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> 13</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
-          </ul> 
-               
-          <div class="panel panel-default">
-            <div class="panel-heading">Social Media</div>
-            <div class="panel-body">
-            	<i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
-            </div>
-          </div>
-          
-        </div><!--/col-3-->
+        <input type="file" class="text-center center-block file-upload" name='image'>
+       </div></hr><br>
+    </div><!--/col-3-->
     <div class="col-sm-9">   
           <div class="tab-content">
             <div class="tab-pane active" id="home">
-                <hr>
-                  <form class="form" action="##" method="post">
-                      <div class="form-group">
-                          
+            <br>
+                         <div class="form-group">
                           <div class="col-xs-6">
-                              <label for="first_name"><h4>First name</h4></label>
-                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                              <label for="title"><h4>Title</h4></label>
+                              <input type="text" class="form-control" name="title" placeholder="Enter Your Title/Profession" >
                           </div>
                       </div>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
-                            <label for="last_name"><h4>Last name</h4></label>
-                              <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
+                              <label for="first_name"><h4>Address</h4></label>
+                              <input type="text" class="form-control" name="address" placeholder="Enter Your Address" >
                           </div>
                       </div>
-          
+               
                       <div class="form-group">
                           
                           <div class="col-xs-6">
                               <label for="phone"><h4>Phone</h4></label>
-                              <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
+                              <input type="text" class="form-control" name="mobile" placeholder="Enter Mobile Number">
+                          </div>
+                      </div>
+                 <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                            <label for="nationality"><h4>Nationality</h4></label>
+                              <input type="text" class="form-control" name="nationality" placeholder="Enter Your Nationality" >
+                          </div>
+                      </div>
+
+                        <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                            <label for="state"><h4>State</h4></label>
+                              <input type="text" class="form-control" name="state" placeholder="Enter Your State" >
+                          </div>
+                      </div>
+
+
+                        <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                            <label for="skills"><h4>Skills</h4></label>
+                              <input type="text" class="form-control" name="skills" placeholder="Enter Your Skills seperated in commas" >
                           </div>
                       </div>
           
-                      <div class="form-group">
+                        <div class="form-group">
+                          
                           <div class="col-xs-6">
-                             <label for="mobile"><h4>Mobile</h4></label>
-                              <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
+                            <label for="hobbies"><h4>Hobbies</h4></label>
+                              <input type="text" class="form-control" name="hobbies" placeholder="Enter Your Hobbies Seperated with Commas" >
                           </div>
                       </div>
+
+
+                        <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                            <label for="references"><h4>References</h4></label>
+                              <input type="text" class="form-control" name="references" placeholder="Enter References" >
+                          </div>
+                      </div>
+          
+          
+                      <div class="form-group">
+                           <div class="col-xs-12">
+                                <br>
+                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Update Profile</button>
+                            </div>
+                      </div>
+            </div><!--/tab-pane-->
+        </div><!--/tab-content-->
+        </div><!--/col-9-->
+     </div><!--/row-->
+ </form> 
+<br>
+<br>
+<br>
+
+ {% comment %} #################################################################################################### {% endcomment %}
+
+<form action="{% url 'education' %}" method='post' class='border border-solid'>
+{% csrf_token %}
+<div class="row">
+  	<div class="col-sm-3"><!--left col-->  
+      <br>
+       <div class="text-center">
+            <h2>EDUCATION</h2>
+       </div></hr><br>
+    </div><!--/col-3-->
+    <div class="col-sm-9">   
+          <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <br>
                       <div class="form-group">
                           
                           <div class="col-xs-6">
-                              <label for="email"><h4>Email</h4></label>
-                              <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
+                              <label for="name"><h4>School Name</h4></label>
+                              <input type="text" class="form-control" name="school"  placeholder="Enter name of school/college" >
                           </div>
                       </div>
                       <div class="form-group">
-                          
                           <div class="col-xs-6">
-                              <label for="email"><h4>Location</h4></label>
-                              <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
+                            <label for="last_name"><h4>Descipline</h4></label>
+                              <input type="text" class="form-control" name="descipline"  placeholder="Enter descipline or course of study">
                           </div>
                       </div>
                       <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="password"><h4>Password</h4></label>
-                              <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                            <label for="password2"><h4>Verify</h4></label>
-                              <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
+                          <div class="col-xs-6 col-lg-3">
+                            <label for="date"><h4>Start Date</h4></label>
+                              <input type="date" class="form-control" name="start" >
+                               <label for="date"><h4>End Date</h4></label>
+                              <input type="date" class="form-control" name="end" >
                           </div>
                       </div>
                       <div class="form-group">
                            <div class="col-xs-12">
                                 <br>
-                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                               	<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Update Education</button>
                             </div>
                       </div>
-              	</form>
-               
             </div><!--/tab-pane-->
         </div><!--/tab-content-->
+        </div><!--/col-9-->
+     </div><!--/row-->
+ </form> 
 
-    </div><!--/col-9-->
-</div><!--/row-->
+<br>
+<br>
+<br>
+
+
+ {% comment %} ############################################################################## {% endcomment %}
+
+ <form action="{% url 'experience' %}" method='post' class='border border-solid'>
+ {% csrf_token %}
+<div class="row">
+  	<div class="col-sm-3"><!--left col-->  
+      <br>
+       <div class="text-center">
+            <h2>WORK EXPERIENCE</h2>
+       </div></hr><br>
+    </div><!--/col-3-->
+    <div class="col-sm-9">   
+          <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <br>
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                              <label for="company"><h4>Company</h4></label>
+                              <input type="text" class="form-control" name="company" placeholder="Enter Company Name" >
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                            <label for="role"><h4>Role</h4></label>
+                              <input type="text" class="form-control" name="role" placeholder="Enter Job Role" >
+                          </div>
+                      </div>
+                        <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                            <label for="description"><h4>Description</h4></label>
+                             <textarea name="description" style="width: 98%" rows="10"></textarea>
+                          </div>
+                      </div>
+          
+          
+                         <div class="form-group">
+                          <div class="col-xs-6 col-lg-3">
+                            <label for="date"><h4>Start Date</h4></label>
+                              <input type="date" class="form-control" name="start" >
+                               <label for="date"><h4>End Date</h4></label>
+                              <input type="date" class="form-control" name="end" >
+                          </div>
+                      </div>
+                      <div class="form-group">
+                           <div class="col-xs-12">
+                                <br>
+                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Update Work Experience</button>
+                            </div>
+                      </div>
+            </div><!--/tab-pane-->
+        </div><!--/tab-content-->
+        </div><!--/col-9-->
+     </div><!--/row-->
+ </form> 
+<br>
+<br>
+<br>
+
+ {% comment %} ########################################################################################### {% endcomment %}
+
+ <form action="projects" method='post' class='border border-solid'>
+<div class="row">
+  	<div class="col-sm-3"><!--left col-->  
+      <br>
+       <div class="text-center">
+            <h2>PROJECTS</h2>
+       </div></hr><br>
+    </div><!--/col-3-->
+    <div class="col-sm-9">   
+          <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <br>
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                              <label for="name"><h4>Name</h4></label>
+                              <input type="text" class="form-control" name="project_name"placeholder="Enter Project Name" >
+                          </div>
+                      </div>
+                      <div class="form-group">
+                         <div class="col-xs-6">
+                            <label for="description"><h4>Description</h4></label>
+                             <textarea name="description" style="width: 98%" rows="10"></textarea>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                           <div class="col-xs-12">
+                                <br>
+                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Update Projects</button>
+                            </div>
+                      </div>
+            </div><!--/tab-pane-->
+        </div><!--/tab-content-->
+        </div><!--/col-9-->
+     </div><!--/row-->
+ </form> 
+
+ </div>
 </div>
 {% endblock content %}
 

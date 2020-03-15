@@ -1,8 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-
+from .models import Education, Work_experience, Projects, Profile
 # Create your views here.
+
+user_education = Education.objects.all()
+user_work_experience = Work_experience.objects.all()
+user_projects = Projects.objects.all()
+user_profile = Profile.objects.all()
+
 
 #  A function to render the home.html template
 
@@ -52,7 +58,6 @@ def signup(request):
             if user.is_active:
                 auth.login(request, user)
                 return redirect('/dashboard/')
-
     else:
         return render(request, 'signup.html')
 
@@ -79,7 +84,7 @@ def login(request):
 
 # a function to render the dashboard template
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    return render(request, 'dashboard.html', {'user_profile': user_profile, 'user_education': user_education, 'user_work_experience': user_work_experience, 'user_projects': user_projects})
 
 
 # a function to logout the user
@@ -96,3 +101,78 @@ def createcv(request):
 # a function to render and also update the profile table details in the database
 def profileform(request):
     return render(request, 'profileform.html')
+
+
+def education(request):
+    if request.method == 'POST':
+        start = request.POST['start']
+        end = request.POST['end']
+        school = request.POST['school']
+        descipline = request.POST['descipline']
+
+        edu = Education(start=start, end=end, school=school,
+                        descipline=descipline)
+
+        instance = edu
+        instance.user_id = request.user
+        instance.save()
+        return redirect('/dashboard/')
+    else:
+        return redirect('/dashboard/')
+
+
+def experience(request):
+    if request.method == 'POST':
+        start = request.POST['start']
+        end = request.POST['end']
+        company = request.POST['school']
+        role = request.POST['descipline']
+        description = request.POST['descipline']
+
+        exe = Work_experience(start=start, end=end, company=company, role=role,
+                              description=description)
+        instance = exe
+        instance.user_id = request.user
+        instance.save()
+        return redirect('/dashboard/')
+    else:
+        return redirect('/dashboard/')
+
+
+def projects(request):
+    if request.method == 'POST':
+        project_name = request.POST['project_name']
+        description = request.POST['description']
+
+        pro = Projects(project_name=project_name, description=description)
+
+        instance = pro
+        instance.user_id = request.user
+        instance.save()
+        return redirect('/dashboard/')
+    else:
+        return redirect('/dashboard/')
+
+
+def profile(request):
+    if request.method == 'POST':
+
+        title = request.POST['title']
+        address = request.POST['address']
+        mobile = request.POST['mobile']
+        image = request.POST['image']
+        nationality = request.POST['nationality']
+        state = request.POST['state']
+        skills = request.POST['skills']
+        hobbies = request.POST['hobbies']
+        references = request.POST['references']
+
+        pro = Profile(title=title, address=address, mobile=mobile, image=image, nationality=nationality,
+                      state=state, skills=skills, hobbies=hobbies, references=references)
+
+        instance = pro
+        instance.user_id = request.user
+        instance.save()
+        return redirect('/dashboard/')
+    else:
+        return redirect('/dashboard/')

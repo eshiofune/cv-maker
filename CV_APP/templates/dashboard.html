@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load cloudinary %}
 {% block content %}
 {% if user.is_authenticated %}
 
@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div data-bs-hover-animate="pulse"  class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                            <img src="" alt=""/>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -16,7 +16,7 @@
                                         {{user.first_name}} {{user.last_name}}
                                     </h5>
                                     <h6>
-                                        Web Developer and Designer
+                                        {{user_profile.title}}
                                     </h6>
                                     <p class="proile-rating">RANKINGS : <span>8/10</span></p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">

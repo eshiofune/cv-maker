@@ -30,11 +30,12 @@ class Projects(models.Model):
 
 class Profile(models.Model):
     user_id = models.OneToOneField(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100, blank=True)
     address = models.TextField()
     mobile = models.CharField(max_length=20)
     image = CloudinaryField()
-    nationality = models.CharField(max_length=100)
-    state = models.CharField(max_length=100)
+    nationality = models.CharField(max_length=100, blank=True)
+    state = models.CharField(max_length=100, blank=True)
     skills = models.TextField()
-    hobbles = models.TextField()
-    references = models.TextField()
+    hobbies = models.TextField(blank=True)
+    references = models.TextField(blank=True)

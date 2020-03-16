@@ -10,7 +10,7 @@ class Education(models.Model):
     end = models.DateTimeField()
     school = models.CharField(max_length=100)
     descipline = models.CharField(max_length=100)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    userid = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 class Work_experience(models.Model):
@@ -19,17 +19,17 @@ class Work_experience(models.Model):
     company = models.CharField(max_length=100)
     role = models.CharField(max_length=100)
     description = models.TextField()
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    userid = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 class Projects(models.Model):
     project_name = models.CharField(max_length=100)
     description = models.TextField()
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    userid = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 class Profile(models.Model):
-    user_id = models.OneToOneField(User, on_delete=models.CASCADE)
+    userid = models.OneToOneField(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100, blank=True)
     address = models.TextField()
     mobile = models.CharField(max_length=20)

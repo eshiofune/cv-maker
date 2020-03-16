@@ -4,10 +4,10 @@ from django.contrib import messages
 from .models import Education, Work_experience, Projects, Profile
 # Create your views here.
 
-user_education = Education.objects.all()
-user_work_experience = Work_experience.objects.all()
-user_projects = Projects.objects.all()
-user_profile = Profile.objects.all()
+# user_education = Education.objects.all()
+# user_work_experience = Work_experience.objects.all()
+# user_projects = Projects.objects.all()
+# user_profile = Profile.objects.all()
 
 
 #  A function to render the home.html template
@@ -84,6 +84,14 @@ def login(request):
 
 # a function to render the dashboard template
 def dashboard(request):
+    user = request.user
+
+    user_education = Education.objects.filter(userid=user)
+    user_work_experience = Work_experience.objects.filter(userid=user)
+    user_projects = Projects.objects.filter(userid=user)
+    user_profile = Profile.objects.filter(userid=user)
+    print(user_work_experience)
+
     return render(request, 'dashboard.html', {'user_profile': user_profile, 'user_education': user_education, 'user_work_experience': user_work_experience, 'user_projects': user_projects})
 
 
@@ -92,8 +100,9 @@ def logout(request):
     auth.logout(request)
     return redirect('/')
 
-
 # a function to render the template for CV samples
+
+
 def createcv(request):
     return render(request, 'createcv.html')
 
@@ -114,7 +123,7 @@ def education(request):
                         descipline=descipline)
 
         instance = edu
-        instance.user_id = request.user
+        instance.userid = request.user
         instance.save()
         return redirect('/dashboard/')
     else:
@@ -125,14 +134,14 @@ def experience(request):
     if request.method == 'POST':
         start = request.POST['start']
         end = request.POST['end']
-        company = request.POST['school']
-        role = request.POST['descipline']
-        description = request.POST['descipline']
+        company = request.POST['company']
+        role = request.POST['role']
+        description = request.POST['description']
 
         exe = Work_experience(start=start, end=end, company=company, role=role,
                               description=description)
         instance = exe
-        instance.user_id = request.user
+        instance.userid = request.user
         instance.save()
         return redirect('/dashboard/')
     else:
@@ -147,7 +156,7 @@ def projects(request):
         pro = Projects(project_name=project_name, description=description)
 
         instance = pro
-        instance.user_id = request.user
+        instance.userid = request.user
         instance.save()
         return redirect('/dashboard/')
     else:
@@ -171,7 +180,7 @@ def profile(request):
                       state=state, skills=skills, hobbies=hobbies, references=references)
 
         instance = pro
-        instance.user_id = request.user
+        instance.userid = request.user
         instance.save()
         return redirect('/dashboard/')
     else:

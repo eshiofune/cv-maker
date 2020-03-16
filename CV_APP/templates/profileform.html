@@ -214,7 +214,8 @@
 
  {% comment %} ########################################################################################### {% endcomment %}
 
- <form action="projects" method='post' class='border border-solid'>
+ <form action="{% url 'projects' %}" method='post' class='border border-solid'>
+ {% csrf_token %}
 <div class="row">
   	<div class="col-sm-3"><!--left col-->  
       <br>

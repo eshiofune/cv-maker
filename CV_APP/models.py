@@ -2,6 +2,11 @@ from django.db import models
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
 
+from PIL import Image
+from io import BytesIO
+from django.core.files.uploadedfile import InMemoryUploadedFile
+import sys
+
 # Create your models here.
 
 
@@ -33,7 +38,7 @@ class Profile(models.Model):
     title = models.CharField(max_length=100, blank=True)
     address = models.TextField()
     mobile = models.CharField(max_length=20)
-    image = CloudinaryField()
+    image = models.ImageField(upload_to='media', blank=True)
     nationality = models.CharField(max_length=100, blank=True)
     state = models.CharField(max_length=100, blank=True)
     skills = models.TextField()

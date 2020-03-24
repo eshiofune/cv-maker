@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
+from django.core.files.storage import FileSystemStorage
 from .models import Education, Work_experience, Projects, Profile
+
 # Create your views here.
 
 # user_education = Education.objects.all()
@@ -90,9 +92,11 @@ def dashboard(request):
     user_work_experience = Work_experience.objects.filter(userid=user)
     user_projects = Projects.objects.filter(userid=user)
     user_profile = Profile.objects.filter(userid=user)
-    print(user_work_experience)
 
-    return render(request, 'dashboard.html', {'user_profile': user_profile, 'user_education': user_education, 'user_work_experience': user_work_experience, 'user_projects': user_projects})
+    if user_profile:
+        return render(request, 'dashboard.html', {'profile': user_profile[0], 'user_education': user_education, 'user_work_experience': user_work_experience, 'user_projects': user_projects})
+    else:
+        return render(request, 'dashboard.html', {'profile': user_profile, 'user_education': user_education, 'user_work_experience': user_work_experience, 'user_projects': user_projects})
 
 
 # a function to logout the user
@@ -109,7 +113,12 @@ def createcv(request):
 
 # a function to render and also update the profile table details in the database
 def profileform(request):
-    return render(request, 'profileform.html')
+    user = request.user
+    user_profile = Profile.objects.filter(userid=user)
+    if user_profile:
+        return render(request, 'profileform.html', {'profile': user_profile[0]})
+    else:
+        return render(request, 'profileform.html')
 
 
 def education(request):
@@ -163,25 +172,49 @@ def projects(request):
         return redirect('/dashboard/')
 
 
-def profile(request):
+def profile(request, id):
     if request.method == 'POST':
+        if id == 0:
 
-        title = request.POST['title']
-        address = request.POST['address']
-        mobile = request.POST['mobile']
-        image = request.POST['image']
-        nationality = request.POST['nationality']
-        state = request.POST['state']
-        skills = request.POST['skills']
-        hobbies = request.POST['hobbies']
-        references = request.POST['references']
+            title = request.POST['title']
+            address = request.POST['address']
+            mobile = request.POST['mobile']
+            image = request.FILES['image']
+            nationality = request.POST['nationality']
+            state = request.POST['state']
+            skills = request.POST['skills']
+            hobbies = request.POST['hobbies']
+            references = request.POST['references']
 
-        pro = Profile(title=title, address=address, mobile=mobile, image=image, nationality=nationality,
-                      state=state, skills=skills, hobbies=hobbies, references=references)
+            fs = FileSystemStorage()
+            name = fs.save(image.name, image)
+            image_url = fs.url(name)
+            pro = Profile(title=title, address=address, mobile=mobile, image=image_url, nationality=nationality,
+                          state=state, skills=skills, hobbies=hobbies, references=references)
 
-        instance = pro
-        instance.userid = request.user
-        instance.save()
-        return redirect('/dashboard/')
+            instance = pro
+            instance.userid = request.user
+            instance.save()
+            return redirect('/dashboard/')
+
+        else:
+            title = request.POST['title']
+            address = request.POST['address']
+            mobile = request.POST['mobile']
+            image = request.FILES['image']
+            nationality = request.POST['nationality']
+            state = request.POST['state']
+            skills = request.POST['skills']
+            hobbies = request.POST['hobbies']
+            references = request.POST['references']
+
+            fs = FileSystemStorage()
+            name = fs.save(image.name, image)
+            image_url = fs.url(name)
+            pro = Profile.objects.filter(userid=id)
+            pro.update(title=title, address=address, mobile=mobile, image=image_url, nationality=nationality,
+                       state=state, skills=skills, hobbies=hobbies, references=references)
+            print('inserted')
+            return redirect('/dashboard/')
     else:
         return redirect('/dashboard/')

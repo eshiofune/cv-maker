@@ -24,12 +24,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'fperaj(y)o(!x1jnvf_v$i3_)bpjc$tliq9guze=quzer1bp(x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['digital-cv-maker.herokuapp.com', '127.0.0.1']
 
 
-# Application definition
+# Application defineition
 
 INSTALLED_APPS = [
     'django.contrib.admin',

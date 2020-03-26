@@ -11,19 +11,19 @@ import sys
 
 
 class Education(models.Model):
-    start = models.DateTimeField()
-    end = models.DateTimeField()
+    start = models.CharField(max_length=150, null=True, default="Now")
+    end = models.CharField(max_length=150, null=True, default="Now")
     school = models.CharField(max_length=100)
     descipline = models.CharField(max_length=100)
     userid = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
 class Work_experience(models.Model):
-    start = models.DateField()
-    end = models.DateField()
+    start = models.CharField(max_length=150, null=True, default="Now")
+    end = models.CharField(max_length=150, null=True, default="Now")
     company = models.CharField(max_length=100)
-    role = models.CharField(max_length=100)
-    description = models.TextField()
+    role = models.CharField(max_length=100, blank=True)
+    description = models.TextField(blank=True)
     userid = models.ForeignKey(User, on_delete=models.CASCADE)
 
 

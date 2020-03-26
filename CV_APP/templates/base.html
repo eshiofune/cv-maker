@@ -34,7 +34,7 @@
                             <div class="form-group"><label for="search-field"></label><input class="form-control search-field" type="search" id="search-field" name="search"></div>
                         </form>
                         {% if user.is_authenticated %}
-                         <div><a class="btn btn-light action-button" role="button" data-bs-hover-animate="pulse" href="{% url 'createcv' %}">CREATE CV</a></div>
+                         <div><a class="btn btn-light" role="button" data-bs-hover-animate="pulse" href="{% url 'createcv' %}">CREATE CV</a></div>
                         <div class="dropdown" style="margin-right: 10px;margin-left: 10px; margin-top: 4px"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" style="color: rgb(217,222,228);"><b>{{user.username}}</b></a>
                             <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="{% url 'dashboard' %}">Dashboard</a><a class="dropdown-item" role="presentation" href="{% url 'logout' %}">Sign Out</a></div>
                         {% else %}

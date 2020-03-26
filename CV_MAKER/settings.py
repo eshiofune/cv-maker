@@ -29,7 +29,7 @@ DEBUG = False
 ALLOWED_HOSTS = ['digital-cv-maker.herokuapp.com', '127.0.0.1']
 
 
-# Application definition
+# Application defineition
 
 INSTALLED_APPS = [
     'django.contrib.admin',

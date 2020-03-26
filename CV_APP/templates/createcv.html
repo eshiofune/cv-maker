@@ -1,35 +1,34 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
- <div style="padding-top: 70px; background-color: rgb(255,255,255,0.7)">
+ <div style="margin-top: 30px; background-color: rgb(255,255,255,0.7)">
         <div class="projects-horizontal">
           <div class="container">
             <div class="intro">
-              <h2 class="text-center" >Portfolio</h2>
+              <h2 class="text-center" ><b>CV Templates</b> </h2>
               <p class="text-center">
-                Nunc luctus in metus eget fringilla. Aliquam sed justo ligula.
-                Vestibulum nibh erat, pellentesque ut laoreet vitae.{" "}
+              Select a CV template that you desire
               </p>
             </div>
-            <div class="row projects">
+            <div class="row projects" style="margin-top: 50px">
 
-          {% for project in projects %}
-              <div class="col-sm-6 item" style="background-color: white">
+        {% comment %} INdividual templates {% endcomment %}
+              <div class="col-sm-6 item" style="background-color: white; margin-bottom: 10px">
                 <div class="row">
-                  <div class="col-md-12 col-lg-5">
-                    <a href="{{project.link}}">
-                      <img class="img-fluid" src="{{project.image.url}}" />
+                  <div class="col-md-12 col-lg-6">
+                    <a href="{% url 'temp' 2 %}">
+                      <img class="img-fluid" src="{% static 'img/temps/temp2.png' %}" />
                     </a>
                   </div>
                   <div class="col">
-                    <h3 class="name">{{project.name}}</h3>
+                    <h3 class="name">Template 2</h3>
                     <p class="description">{{project.description}}</p>
                     <hr>
-                    <p>Link: <a href="{{project.link}}">Click Here</a></p>
                   </div>
                 </div>
               </div>
-          {% endfor %}
+        {% comment %} End of Individual Templates {% endcomment %}
 
             </div>
           </div>

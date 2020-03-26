@@ -39,6 +39,7 @@ class Profile(models.Model):
     address = models.TextField()
     mobile = models.CharField(max_length=20)
     image = models.ImageField(upload_to='media', blank=True)
+    img_name = state = models.CharField(max_length=1000, blank=True)
     nationality = models.CharField(max_length=100, blank=True)
     state = models.CharField(max_length=100, blank=True)
     skills = models.TextField()

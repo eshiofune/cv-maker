@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from django.core.files.storage import FileSystemStorage
+from django.core.files.storage import FileSystemStorage, default_storage
 from .models import Education, Work_experience, Projects, Profile
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Create your views here.
 
@@ -190,7 +192,7 @@ def profile(request, id):
             name = fs.save(image.name, image)
             image_url = fs.url(name)
             pro = Profile(title=title, address=address, mobile=mobile, image=image_url, nationality=nationality,
-                          state=state, skills=skills, hobbies=hobbies, references=references)
+                          state=state, skills=skills, hobbies=hobbies, references=references, img_name=name)
 
             instance = pro
             instance.userid = request.user
@@ -208,13 +210,46 @@ def profile(request, id):
             hobbies = request.POST['hobbies']
             references = request.POST['references']
 
+            # getting the user profile so as to delete the previous image they uploaded before uploading a new one
+            user = request.user
+            user_profile = Profile.objects.filter(userid=user)
+            person = user_profile[0]
+            default_storage.delete(str(person.img_name))
+
             fs = FileSystemStorage()
             name = fs.save(image.name, image)
             image_url = fs.url(name)
             pro = Profile.objects.filter(userid=id)
             pro.update(title=title, address=address, mobile=mobile, image=image_url, nationality=nationality,
-                       state=state, skills=skills, hobbies=hobbies, references=references)
+                       state=state, skills=skills, hobbies=hobbies, references=references, img_name=name)
             print('inserted')
             return redirect('/dashboard/')
     else:
         return redirect('/dashboard/')
+
+
+# a function to render the individual templates depending on which one the user selected
+def temp(request, id):
+    user = request.user
+
+    user_education = Education.objects.filter(userid=user)
+    user_work_experience = Work_experience.objects.filter(userid=user)
+    user_projects = Projects.objects.filter(userid=user)
+    user_profile = Profile.objects.filter(userid=user)
+
+    if id == 1:
+        if user_profile:
+            return render(request, 'temps/temp1.html', {'profile': user_profile[0], 'user_education': user_education, 'user_work_experience': user_work_experience, 'user_projects': user_projects})
+        else:
+            return render(request, 'temps/temp1.html', {'profile': user_profile, 'user_education': user_education, 'user_work_experience': user_work_experience, 'user_projects': user_projects})
+    elif id == 2:
+        if user_profile:
+            return render(request, 'temps/temp2.html', {'profile': user_profile[0], 'user_education': user_education, 'user_work_experience': user_work_experience, 'user_projects': user_projects})
+        else:
+            return render(request, 'temps/temp2.html', {'profile': user_profile, 'user_education': user_education, 'user_work_experience': user_work_experience, 'user_projects': user_projects})
+
+    elif id == 3:
+        if user_profile:
+            return render(request, 'temps/temp3.html', {'profile': user_profile[0], 'user_education': user_education, 'user_work_experience': user_work_experience, 'user_projects': user_projects})
+        else:
+            return render(request, 'temps/temp3.html', {'profile': user_profile, 'user_education': user_education, 'user_work_experience': user_work_experience, 'user_projects': user_projects})

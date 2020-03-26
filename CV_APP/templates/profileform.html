@@ -1,0 +1,262 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div  class="container emp-profile">
+<div class="container bootstrap snippet">
+{% if profile %}
+  <form action="{% url 'profile' user.id %}"  id='profile_form' method='post' enctype="multipart/form-data" class='border'>
+{% else %}
+  <form action="{% url 'profile' 0 %}"  id='profile_form' method='post' enctype="multipart/form-data" class='border'>
+{% endif %}
+   {% csrf_token %}
+<div class="row">
+  	<div class="col-sm-3"><!--left col-->  
+      <br>
+       <div class="text-center">
+        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+        <h6>Upload a different photo...</h6>
+        <input type="file" class="text-center center-block file-upload" name='image' accept='image/*' required>
+       </div></hr><br>
+    </div><!--/col-3-->
+    <div class="col-sm-9">   
+          <div class="tab-content">
+            <div class="tab-pane active" id="home">
+            <br>
+                         <div class="form-group">
+                          <div class="col-xs-6">
+                              <label for="title"><h4>Title</h4></label>
+                              <input type="text" class="form-control" name="title" placeholder="Enter Your Title/Profession" >
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                              <label for="first_name"><h4>Address</h4></label>
+                              <input type="text" class="form-control" name="address" placeholder="Enter Your Address" >
+                          </div>
+                      </div>
+               
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                              <label for="phone"><h4>Phone</h4></label>
+                              <input type="text" class="form-control" name="mobile" placeholder="Enter Mobile Number">
+                          </div>
+                      </div>
+                 <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                            <label for="nationality"><h4>Nationality</h4></label>
+                              <input type="text" class="form-control" name="nationality" placeholder="Enter Your Nationality" >
+                          </div>
+                      </div>
+
+                        <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                            <label for="state"><h4>State</h4></label>
+                              <input type="text" class="form-control" name="state" placeholder="Enter Your State" >
+                          </div>
+                      </div>
+
+
+                        <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                            <label for="skills"><h4>Skills</h4></label>
+                              <input type="text" class="form-control" name="skills" placeholder="Enter Your Skills seperated in commas" >
+                          </div>
+                      </div>
+          
+                        <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                            <label for="hobbies"><h4>Hobbies</h4></label>
+                              <input type="text" class="form-control" name="hobbies" placeholder="Enter Your Hobbies Seperated with Commas" >
+                          </div>
+                      </div>
+
+
+                        <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                            <label for="references"><h4>References</h4></label>
+                              <input type="text" class="form-control" name="references" placeholder="Enter References" >
+                          </div>
+                      </div>
+          
+          
+                      <div class="form-group">
+                           <div class="col-xs-12">
+                                <br>
+                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save Profile</button>
+                            </div>
+                      </div>
+            </div><!--/tab-pane-->
+        </div><!--/tab-content-->
+        </div><!--/col-9-->
+     </div><!--/row-->
+ </form> 
+<br>
+<br>
+<br>
+
+ {% comment %} #################################################################################################### {% endcomment %}
+
+<form action="{% url 'education' %}" method='post' class='border border-solid'>
+{% csrf_token %}
+<div class="row">
+  	<div class="col-sm-3"><!--left col-->  
+      <br>
+       <div class="text-center">
+            <h2>EDUCATION</h2>
+       </div></hr><br>
+    </div><!--/col-3-->
+    <div class="col-sm-9">   
+          <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <br>
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                              <label for="name"><h4>School Name</h4></label>
+                              <input type="text" class="form-control" name="school"  placeholder="Enter name of school/college" >
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="col-xs-6">
+                            <label for="last_name"><h4>Descipline</h4></label>
+                              <input type="text" class="form-control" name="descipline"  placeholder="Enter descipline or course of study">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="col-xs-6 col-lg-3">
+                            <label for="date"><h4>Start Date</h4></label>
+                              <input type="date" class="form-control" name="start" >
+                               <label for="date"><h4>End Date</h4></label>
+                              <input type="date" class="form-control" name="end" >
+                          </div>
+                      </div>
+                      <div class="form-group">
+                           <div class="col-xs-12">
+                                <br>
+                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Update Education</button>
+                            </div>
+                      </div>
+            </div><!--/tab-pane-->
+        </div><!--/tab-content-->
+        </div><!--/col-9-->
+     </div><!--/row-->
+ </form> 
+
+<br>
+<br>
+<br>
+
+
+ {% comment %} ############################################################################## {% endcomment %}
+
+ <form action="{% url 'experience' %}" method='post' class='border border-solid'>
+ {% csrf_token %}
+<div class="row">
+  	<div class="col-sm-3"><!--left col-->  
+      <br>
+       <div class="text-center">
+            <h2>WORK EXPERIENCE</h2>
+       </div></hr><br>
+    </div><!--/col-3-->
+    <div class="col-sm-9">   
+          <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <br>
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                              <label for="company"><h4>Company</h4></label>
+                              <input type="text" class="form-control" name="company" placeholder="Enter Company Name" >
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                            <label for="role"><h4>Role</h4></label>
+                              <input type="text" class="form-control" name="role" placeholder="Enter Job Role" >
+                          </div>
+                      </div>
+                        <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                            <label for="description"><h4>Description</h4></label>
+                             <textarea name="description" style="width: 98%" rows="10"></textarea>
+                          </div>
+                      </div>
+          
+          
+                         <div class="form-group">
+                          <div class="col-xs-6 col-lg-3">
+                            <label for="date"><h4>Start Date</h4></label>
+                              <input type="date" class="form-control" name="start" >
+                               <label for="date"><h4>End Date</h4></label>
+                              <input type="date" class="form-control" name="end" >
+                          </div>
+                      </div>
+                      <div class="form-group">
+                           <div class="col-xs-12">
+                                <br>
+                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Update Work Experience</button>
+                            </div>
+                      </div>
+            </div><!--/tab-pane-->
+        </div><!--/tab-content-->
+        </div><!--/col-9-->
+     </div><!--/row-->
+ </form> 
+<br>
+<br>
+<br>
+
+ {% comment %} ########################################################################################### {% endcomment %}
+
+ <form action="{% url 'projects' %}" method='post' class='border border-solid'>
+ {% csrf_token %}
+<div class="row">
+  	<div class="col-sm-3"><!--left col-->  
+      <br>
+       <div class="text-center">
+            <h2>PROJECTS</h2>
+       </div></hr><br>
+    </div><!--/col-3-->
+    <div class="col-sm-9">   
+          <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <br>
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                              <label for="name"><h4>Name</h4></label>
+                              <input type="text" class="form-control" name="project_name"placeholder="Enter Project Name" >
+                          </div>
+                      </div>
+                      <div class="form-group">
+                         <div class="col-xs-6">
+                            <label for="description"><h4>Description</h4></label>
+                             <textarea name="description" style="width: 98%" rows="10"></textarea>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                           <div class="col-xs-12">
+                                <br>
+                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Update Projects</button>
+                            </div>
+                      </div>
+            </div><!--/tab-pane-->
+        </div><!--/tab-content-->
+        </div><!--/col-9-->
+     </div><!--/row-->
+ </form> 
+
+ </div>
+</div>
+{% endblock content %}
+

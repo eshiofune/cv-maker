@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+ <div style="margin-top: 30px; background-color: rgb(255,255,255,0.7)">
+        <div class="projects-horizontal">
+          <div class="container">
+            <div class="intro">
+              <h2 class="text-center" ><b>CV Templates</b> </h2>
+              <p class="text-center">
+              Select a CV template that you desire
+              </p>
+            </div>
+            <div class="row projects" style="margin-top: 50px">
+
+        {% comment %} INdividual templates {% endcomment %}
+              <div class="col-sm-6 item" style="background-color: white; margin-bottom: 10px">
+                <div class="row">
+                  <div class="col-md-12 col-lg-6">
+                    <a href="{% url 'temp' 2 %}">
+                      <img class="img-fluid" src="{% static 'img/temps/temp2.png' %}" />
+                    </a>
+                  </div>
+                  <div class="col">
+                    <h3 class="name">Template 2</h3>
+                    <p class="description">{{project.description}}</p>
+                    <hr>
+                  </div>
+                </div>
+              </div>
+        {% comment %} End of Individual Templates {% endcomment %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock content %}

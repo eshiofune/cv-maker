@@ -44,6 +44,12 @@
                         <p>{{profile.skills}}</p>
                           
                         </div>
+
+                          <div class="profile-work">
+                        <h3>Hobbies</h3>
+                        <p>{{profile.hobbies}}</p>
+                          
+                        </div>
                     </div>
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
@@ -100,48 +106,91 @@
                                        
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                     <div class="row">
-                                            <div class="col-md-12">
+                                            <div class="col-10 col-md-10">
                                                 <h2>Education</h2>
                                                 <hr>
                                                 {% for education in user_education %}
-                                                <ul>
-                                                <li>
-                                                    <h4><b>{{education.school}}</b><small> from {{education.start}} - {{education.end}}</small></h4>
-                                                    <p>{{education.descipline}}</p>
-                                                </li>
-                                                </ul>
+                                                <div class="row">
+                                                    <div class="col-10 col-md-10">
+                                                    <ul>
+                                                    <li>
+                                                        <h4><b>{{education.school}}</b></h4><small> from {{education.start}} - {{education.end}}</small>
+                                                        <p>{{education.descipline}}</p>
+                                                    </li>
+                                                    </ul>
+                                                    </div>
+                                                    <div class="col-2 col-md-2">
+                                                    <form action="{% url 'edudelete' education.id %}" method="post">
+                                                    {% csrf_token %}
+                                                     <input type="submit" value="Delete" class="btn btn-danger" style="font-size:7pt; padding:0.5">
+                                                    </form>
+                                                       
+                                                    </div>
+                                                </div>
+                                              
                                                 {% endfor %}
+                                            </div>
+                                            <div class="col-2 col-md-2">
+                                                <a href="{% url 'education' %}" class="btn btn-success" style="font-size:7pt; padding:0.5">Add</a>
                                             </div>
                                         </div>  
                                         <hr>
                                         <div class="row">
-                                            <div class="col-md-12">
+                                            <div class="col-10 col-md-10">
                                                 <h2>Experiences</h2>
                                                 <hr>
                                                 {% for experience in user_work_experience %}
+                                                 <div class="row">
+                                                    <div class="col-10 col-md-10">
                                                 <ul>
                                                 <li>
-                                                    <h4><b>{{experience.company}}</b><small> from {{experience.start}} - {{experience.end}}</small></h4>
+                                                    <h4><b>{{experience.company}}</b></h4> <small> from {{experience.start}} - {{experience.end}}</small>
                                                     <p>{{experience.role}}</p>
                                                     <h6>{{experience.description}}</h6>
                                                     </li>
                                                 </ul>
+                                                    </div>
+                                                     <div class="col-2 col-md-2">
+                                                     <form action="{% url 'expdelete' experience.id %}" method="post">
+                                                     {% csrf_token %}
+                                                      <input type="submit" value="Delete" class="btn btn-danger" style="font-size:7pt; padding:0.5">
+                                                     </form>
+                                                        
+                                                    </div>
+                                                </div>
                                                 {% endfor %}
+                                            </div>
+                                            <div class="col-2 col-md-2">
+                                                <a href="{% url 'experience' %}" class="btn btn-success" style="font-size:7pt; padding:0.5">Add</a>
                                             </div>
                                         </div>  
                                          <hr>
                                         <div class="row">
-                                            <div class="col-md-12">
+                                            <div class="col-10 col-md-10">
                                                 <h2>Projects</h2>
                                                 <hr>
                                                 {% for project in user_projects %}
+                                                <div class="row">
+                                                    <div class="col-10 col-md-10">
                                                 <ul>
                                                 <li>
                                                     <h4><b>{{project.project_name}}</b></h4>
                                                     <h6>{{project.description}}</h6>
                                                     </li>
                                                 </ul>
+                                                 </div>
+                                                     <div class="col-2 col-md-2">
+                                                     <form action="{% url 'projdelete' project.id %}" method="post">
+                                                     {% csrf_token %}
+                                                      <input type="submit" value="Delete" class="btn btn-danger" style="font-size:7pt; padding:0.5">
+                                                     </form>
+                                                       
+                                                    </div>
+                                                </div>
                                                 {% endfor %}
+                                            </div>
+                                               <div class="col-2 col-md-2">
+                                                <a href="{% url 'projects' %}" class="btn btn-success" style="font-size:7pt; padding:0.5">Add</a>
                                             </div>
                                         </div>
                             </div>

@@ -138,7 +138,7 @@ def education(request):
         instance.save()
         return redirect('/dashboard/')
     else:
-        return redirect('/dashboard/')
+        return render(request, 'eduform.html')
 
 
 def experience(request):
@@ -156,7 +156,7 @@ def experience(request):
         instance.save()
         return redirect('/dashboard/')
     else:
-        return redirect('/dashboard/')
+        return render(request, 'expform.html')
 
 
 def projects(request):
@@ -171,7 +171,7 @@ def projects(request):
         instance.save()
         return redirect('/dashboard/')
     else:
-        return redirect('/dashboard/')
+        return render(request, 'projform.html')
 
 
 def profile(request, id):
@@ -253,3 +253,21 @@ def temp(request, id):
             return render(request, 'temps/temp3.html', {'profile': user_profile[0], 'user_education': user_education, 'user_work_experience': user_work_experience, 'user_projects': user_projects})
         else:
             return render(request, 'temps/temp3.html', {'profile': user_profile, 'user_education': user_education, 'user_work_experience': user_work_experience, 'user_projects': user_projects})
+
+
+def edudelete(request, id):
+    education = Education.objects.get(pk=id)
+    education.delete()
+    return redirect('/dashboard/')
+
+
+def expdelete(request, id):
+    experience = Work_experience.objects.get(pk=id)
+    experience.delete()
+    return redirect('/dashboard/')
+
+
+def projdelete(request, id):
+    project = Projects.objects.get(pk=id)
+    project.delete()
+    return redirect('/dashboard/')

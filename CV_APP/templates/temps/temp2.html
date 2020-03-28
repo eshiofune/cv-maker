@@ -4,7 +4,7 @@
 
 <head>
     <title>Two</title>
-    <link rel="stylesheet" href="C:\Users\wisdom chukwudi\Downloads\fontawesome-free-5.12.0-web\fontawesome-free-5.12.0-web\css\all.css">
+   <link rel="stylesheet" href="{% static 'fonts/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/temp2library.css' %}">
 
 </head>
@@ -18,47 +18,62 @@
             <h2>CONTACT</h2>
             <p><i class="fa fa-phone"></i><b>{{profile.mobile}}</b></p>
             <p><i class="fa fa-inbox"></i> <b>{{user.email}}</b> </p><br/>
-            <div class="grey-line"></div>
-            <h2>FOLLOW ME</h2>
-            <p><i class="fab fa-instagram"></i> <b>@J_Remmy</b></p>
-            <p><i class="fab fa-twitter"></i> <b>@J_Remmy</b></p>
-            <p><i class="fab fa-linkedin"></i> <b>Jeremy Martins</b></p><br/>
-            <div class="grey-line"></div>
-            <h2>REFERENCES</h2>
-            <p><b>{{profile.references}}</b></p>
-            
+             <p><i class="fa fa-inbox"></i> <b>{{profile.address}}</b> </p><br/>
+              <p><i class="fa fa-inbox"></i> <b>{{profile.state}}</b> </p><br/>
+               <p><i class="fa fa-inbox"></i> <b>{{profile.nationality}}</b> </p><br/>
             <div class="grey-line"></div>
             <h2>INTERESTS</h2>
             <p>{{profile.hobbies}}</p>
-           
+            
+            <div class="grey-line"></div>
+            <h2>REFERENCES</h2>
+            <p><b>{{profile.references}}</b></p>
         </div>
         <div class="large-dvi1">
             <div class="header-div">
-                <div class="display-circle"></div>
-                <h1>{{user.first_name}}</h1>
-                <H1>
-                    <B>{{user.last_name}}</B>
-                </H1>
-                <h3>{{profile.title}}</h3>
+                <div class="f1">
+                    <img src="{{profile.image}}" class="display-circle" alt="Avatar">
+                </div>
+                
+                <div class="f2">
+                    <h1 class="profile-name">{{user.first_name}} <B>{{user.last_name}}</B></h1>  
+                    <h3>{{profile.title}}</h3>
+                </div>
+                
             </div>
             <h2>EDUCATION</h2>
         {% for education in user_education %}
-            <p><b>{{education.start}} - {{education.end}}:</b>{{education.school}}</p>
-            <p class="grey">{{education.descipline}}</p>
-            <div class="black-line"></div><br/>
-            
+            <ul>
+                <li>
+                    <p><b>{{education.start}} - {{education.end}}:</b>{{education.school}}</p>
+                    <p class="grey">{{education.descipline}}</p>
+                </li>
+            </ul>
+           
         {% endfor %}
             <br/>
+            <div class="black-line"></div><br/>
+            <br>
             <h2>EXPERIENCE</h2>
         {% for experience in user_work_experience %}
-            <p><b>{{experience.start}} - {{experience.end}}:</b>{{experience.company}}</p>
-            <p class="grey">{{experience.role}}</p>
-            <p>{{experience.description}}</p>
-            <div class="black-line"></div><br/>
-            
+            <ul>
+                <li>
+                    <p><b>{{experience.start}} - {{experience.end}}:</b>{{experience.company}}</p>
+                    <p class="grey">{{experience.role}}</p>
+                    <p>{{experience.description}}</p>
+                </li>
+            </ul>
         {% endfor %}
+            <br/>
+            <div class="black-line"></div><br/>
+            <br>
             <h2>SKILLS</h2>
-            <P>{{profile.skills}}</P>
+            <ul>
+                <li>
+                 <P>{{profile.skills}}</P>
+                </li>
+            </ul>
+           
            
         </div>
     </div>

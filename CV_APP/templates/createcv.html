@@ -14,21 +14,55 @@
             <div class="row projects" style="margin-top: 50px">
 
         {% comment %} INdividual templates {% endcomment %}
-              <div class="col-sm-6 item" style="background-color: white; margin-bottom: 10px">
+              <div class="col-sm-6 item" style=" margin-bottom: 10px">
                 <div class="row">
                   <div class="col-md-12 col-lg-6">
-                    <a href="{% url 'temp' 2 %}">
+                    <a href="{% url 'temp' 1 %}" target="blank">
+                      <img class="img-fluid" src="{% static 'img/temps/temp1.png' %}" />
+                    </a>
+                  </div>
+                  <div class="col">
+                    <h3 class="name">Template 1</h3>
+                    <hr>
+                    <ul>
+                      <li>Passport Photo</li>
+                      <li>Contact Info</li>
+                      <li>Education Timeline</li>
+                      <li>Work Experience</li>
+                      <li>Skills</li>
+                      <li>References</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+        {% comment %} End of Individual Templates {% endcomment %}
+
+        {% comment %} INdividual templates {% endcomment %}
+              <div class="col-sm-6 item" style=" margin-bottom: 10px">
+                <div class="row">
+                  <div class="col-md-12 col-lg-6">
+                    <a href="{% url 'temp' 2 %}" target="blank"> 
                       <img class="img-fluid" src="{% static 'img/temps/temp2.png' %}" />
                     </a>
                   </div>
                   <div class="col">
                     <h3 class="name">Template 2</h3>
-                    <p class="description">{{project.description}}</p>
                     <hr>
+                      <ul>
+                      <li>Passport photo</li>
+                      <li>Profile Title</li>
+                      <li>Contact Info</li>
+                      <li>Education Timeline</li>
+                      <li>Work Experience</li>
+                      <li>Skills</li>
+                      <li>References</li>
+                    </ul>
                   </div>
                 </div>
               </div>
         {% comment %} End of Individual Templates {% endcomment %}
+
+        
 
             </div>
           </div>

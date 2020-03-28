@@ -1,8 +1,10 @@
 .style-board {
-  height: 400px;
+  height: 50vh;
+  width: 40%;
   background-image: url(../img/rush-resume-template-1.jpg);
-  background-size: cover;
+  background-size: 100%;
   background-repeat: no-repeat;
+  background-position-x: center;
 }
 
 .style-signup {

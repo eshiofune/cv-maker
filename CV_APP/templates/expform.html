@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<style>
+h4 {
+  font-size: 100%
+}
+</style>
 <div  class="container emp-profile">
 <div class="container bootstrap snippet">
 
@@ -11,51 +15,53 @@
  <form action="{% url 'experience' %}" method='post' class='border border-solid'>
  {% csrf_token %}
 <div class="row">
-  	<div class="col-sm-3"><!--left col-->  
+  	<div class="col-md-3"><!--left col-->  
       <br>
        <div class="text-center">
-            <h2>WORK EXPERIENCE</h2>
+            <h2 style="font-size: 150%">WORK EXPERIENCE</h2>
        </div></hr><br>
     </div><!--/col-3-->
-    <div class="col-sm-9">   
+    <div class="col-md-9">   
           <div class="tab-content">
             <div class="tab-pane active" id="home">
                 <br>
                       <div class="form-group">
                           
-                          <div class="col-xs-6">
+                          <div class="col-12 col-md-10">
                               <label for="company"><h4>Company</h4></label>
                               <input type="text" class="form-control" name="company" placeholder="Enter Company Name" >
                           </div>
                       </div>
                       <div class="form-group">
                           
-                          <div class="col-xs-6">
+                          <div class="col-12 col-md-10">
                             <label for="role"><h4>Role</h4></label>
                               <input type="text" class="form-control" name="role" placeholder="Enter Job Role" >
                           </div>
                       </div>
                         <div class="form-group">
                           
-                          <div class="col-xs-6">
+                          <div class="col-12 col-md-10">
                             <label for="description"><h4>Description</h4></label>
-                             <textarea name="description" style="width: 98%" rows="10"></textarea>
+                             <textarea name="description" style="width: 100%" rows="10"></textarea>
                           </div>
                       </div>
           
           
-                         <div class="form-group">
-                          <div class="col-xs-6 col-lg-3">
+                    <div class=" row form-group norm" style="margin: auto">
+                          <div class="col-6 col-md-5">
                             <label for="date"><h4>Start Date</h4></label>
                               <input type="date" class="form-control" name="start" >
-                               <label for="date"><h4>End Date</h4></label>
+                              </div>
+                              <div class="col-6 col-md-5">
+                               <label for="date"><h4>End Date.</h4></label>
                               <input type="date" class="form-control" name="end" >
                           </div>
                       </div>
                       <div class="form-group">
-                           <div class="col-xs-12">
+                           <div class="col-12 col-md-10">
                                 <br>
-                              	<button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Add Work Experience</button>
+                              	<button class="btn btn-lg btn-success btn-block" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Add Work Experience</button>
                             </div>
                       </div>
             </div><!--/tab-pane-->

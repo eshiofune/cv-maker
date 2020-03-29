@@ -5,15 +5,17 @@
 
 <div data-bs-hover-animate="pulse"  class="container emp-profile">
 
-                <div class="row">
-                    <div class="col-md-4">
+                <div class="row" style="margin: auto">
+                    <div class="col-12 col-md-4">
                         <div data-bs-hover-animate="pulse"  class="profile-img">
-                            <img src="{{profile.image}}" alt=""/>
+                            <img src="{{profile.image}}" alt="Avatar"/>
                         </div>
                     </div>
-                    <div class="col-8 col-md-6">
+                <div class="col-12 col-md-8">
+                    <div class="row">
+                    <div class="col-8 col-md-8" style="margin-top: 10px">
                         <div class="profile-head">
-                                    <h2>
+                                    <h2 style="font-size: 150%">
                                         {{user.first_name}} {{user.last_name}}
                                     </h2>
                                     
@@ -32,13 +34,15 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-4 col-md-2">
-                       <a href="{% url 'profileform' %}" class="profile-edit-btn btn btn-light">Edit Profile</a>
+                    <div class="col-4 col-md-4" style="margin-top: 10px;">
+                       <a href="{% url 'profileform' %}" class="profile-edit-btn btn btn-success" style="font-size: 85%; padding: 0.5">Edit Profile</a>
                     </div>
+                 </div>
+                </div>
                 </div>
                 <br>   
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-12 col-md-4">
                         <div class="profile-work">
                         <h3>Skills</h3>
                         <p>{{profile.skills}}</p>
@@ -51,7 +55,7 @@
                           
                         </div>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-12 col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                         <div class="row">
@@ -87,10 +91,10 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <div class="col-3 col-sm-6 col-md-6">
                                                 <label>Address</label>
                                             </div>
-                                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <div class="col-9 col-sm-6 col-md-6">
                                                 <p>{{profile.address}}</p>
                                             </div>
                                         </div>

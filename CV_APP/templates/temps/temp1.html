@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+     <title>Template One</title>
+     <link rel="stylesheet" href="{% static 'css/temp1.css' %}">
+
+</head>
+
+<body>
+
+    <div id="page-wrap">
+    
+        <img src="{{profile.image}}" alt="Avatar" id="pic" style="height:170px; width:150px"/>
+    
+        <div id="contact-info" class="vcard">
+        
+            <!-- Microformats! -->
+        
+            <h1 class="fn">{{user.first_name}} {{user.last_name}}</h1>
+        
+            <p>
+                <b>Cell:</b> --- <span class="tel">{{profile.mobile}}</span><br />
+                <b>Email:</b> --- <a class="email" href="mailto:greatoldone@lovecraft.com">{{user.email}}</a><br>
+                <b>Address:</b> ---<span class="tel">{{profile.address}}</span><br />
+                <b>State/Region:</b> ---<span class="tel">{{profile.state}}</span><br />
+                <b>Nationality:</b> ---<span class="tel">{{profile.nationality}}</span><br />
+            </p>
+        </div>
+                
+        <div id="objective">
+            <p>
+                 
+            </p>
+        </div>
+        
+        <div class="clear"></div>
+        
+        <dl>
+            <dd class="clear"></dd>
+            
+            <dt>Education</dt>
+            {% for education in user_education %}
+            <dd>
+                <h2>{{education.school}}</h2>
+                <p><strong>Date:</strong>{{education.start}} - {{education.end}}<br />
+                   <strong>Descipline:</strong>{{education.descipline}}</p>
+            </dd>
+            {% endfor %}
+            <dd class="clear"></dd>
+            
+            <dt>Skills</dt>
+            <dd>
+              
+                <p>{{profile.skills}}</p>
+                
+            </dd>
+            
+            <dd class="clear"></dd>
+            
+            <dt>Experience</dt>
+            {% for experience in user_work_experience %}
+            <dd>
+                <h2>{{experience.company}}<span>{{experience.role}} - {{experience.start}} - {{experience.end}}</span></h2>
+                <ul>
+                    <li>{{experience.description}}</li>
+                </ul>
+            </dd>
+            {% endfor %}
+            <dd class="clear"></dd>
+            
+            <dt>Hobbies</dt>
+            <dd>{{profile.hobbies}}</dd>
+            
+            <dd class="clear"></dd>
+            
+            <dt>References</dt>
+            <dd>{{profile.references}}</dd>
+            
+            <dd class="clear"></dd>
+        </dl>
+        
+        <div class="clear"></div>
+    
+    </div>
+
+</body>
+
+</html>

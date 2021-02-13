@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Template Two</title>
+   <link rel="stylesheet" href="{% static 'fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/temp2library.css' %}">
+
+</head>
+
+<body>
+    <div class="larger-div">
+        <div class="large-div2">
+            <h2>ABOUT ME</h2>
+            <p>With much pressure growing,<br/> determination pushed me.<br/> I wanted to know more and earn more. </p><br/>
+            <div class="grey-line"></div>
+            <h2>CONTACT</h2>
+            <p><i class="fa fa-phone"></i><b>{{profile.mobile}}</b></p>
+            <p><i class="fa fa-inbox"></i> <b>{{user.email}}</b> </p><br/>
+             <p><i class="fa fa-inbox"></i> <b>{{profile.address}}</b> </p><br/>
+              <p><i class="fa fa-inbox"></i> <b>{{profile.state}}</b> </p><br/>
+               <p><i class="fa fa-inbox"></i> <b>{{profile.nationality}}</b> </p><br/>
+            <div class="grey-line"></div>
+            <h2>INTERESTS</h2>
+            <p>{{profile.hobbies}}</p>
+            
+            <div class="grey-line"></div>
+            <h2>REFERENCES</h2>
+            <p><b>{{profile.references}}</b></p>
+        </div>
+        <div class="large-dvi1">
+            <div class="header-div">
+                <div class="f1">
+                    <img src="{{profile.image}}" class="display-circle" alt="Avatar">
+                </div>
+                
+                <div class="f2">
+                    <h1 class="profile-name">{{user.first_name}} <B>{{user.last_name}}</B></h1>  
+                    <h3>{{profile.title}}</h3>
+                </div>
+                
+            </div>
+            <h2>EDUCATION</h2>
+        {% for education in user_education %}
+            <ul>
+                <li>
+                    <p><b>{{education.start}} - {{education.end}}:</b>{{education.school}}</p>
+                    <p class="grey">{{education.descipline}}</p>
+                </li>
+            </ul>
+           
+        {% endfor %}
+            <br/>
+            <div class="black-line"></div><br/>
+            <br>
+            <h2>EXPERIENCE</h2>
+        {% for experience in user_work_experience %}
+            <ul>
+                <li>
+                    <p><b>{{experience.start}} - {{experience.end}}:</b>{{experience.company}}</p>
+                    <p class="grey">{{experience.role}}</p>
+                    <p>{{experience.description}}</p>
+                </li>
+            </ul>
+        {% endfor %}
+            <br/>
+            <div class="black-line"></div><br/>
+            <br>
+            <h2>SKILLS</h2>
+            <ul>
+                <li>
+                 <P>{{profile.skills}}</P>
+                </li>
+            </ul>
+           
+           
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

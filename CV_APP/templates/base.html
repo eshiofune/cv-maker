@@ -34,11 +34,13 @@
                             <div class="form-group"><label for="search-field"></label><input class="form-control search-field" type="search" id="search-field" name="search"></div>
                         </form>
                         {% if user.is_authenticated %}
-                        <div class="dropdown" style="margin-right: 10px;margin-left: 10px; margin-top: 4px"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" style="color: rgb(217,222,228);">{{user.username}}</a>
-                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="{% url 'logout' %}">Log Out</a></div>
+                         <div><a class="btn btn-light" role="button" data-bs-hover-animate="pulse" href="{% url 'createcv' %}">CREATE CV</a></div>
+                        <div class="dropdown" style="margin-right: 10px;margin-left: 10px; margin-top: 4px"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#" style="color: rgb(217,222,228);"><b>{{user.username}}</b></a>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="{% url 'dashboard' %}">Dashboard</a><a class="dropdown-item" role="presentation" href="{% url 'logout' %}">Sign Out</a></div>
                         {% else %}
-                        <span class="navbar-text"><a data-bs-hover-animate="pulse" class="login" href="{% url 'login' %}">Log In</a></span>
-                        </div><a class="btn btn-light action-button" role="button" data-bs-hover-animate="pulse" href="{% url 'signup' %}">Sign Up</a></div>
+                        <div><a data-bs-hover-animate="pulse" style="margin: 5px" role="button" class="login btn btn-light" href="{% url 'login' %}"> Sign In</a></div>
+                        <br>
+                        <div><a class="btn btn-light" style="margin: 5px" role="button" data-bs-hover-animate="pulse" href="{% url 'signup' %}">Sign Up</a></div>
                         {% endif %}  
                 </div>
             </nav>
@@ -66,7 +68,7 @@
                         </ul>
                     </div>
                     <div class="col-md-6 item text">
-                        <h3>Company Name</h3>
+                        <h3>DIGITAL CV MAKER</h3>
                         <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
                     </div>
                     <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
